@@ -51,7 +51,6 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
       await this.redisClient.del(key);
     }
     await this.del(`user:${userId}:tasks`);
-    console.log(`Deleted ${keys.length} cache keys for user ${userId}`);
   }
 
   async deleteUserCache() {
@@ -59,7 +58,6 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
     for (const key of keys) {
       await this.redisClient.del(key);
     }
-    console.log(`Deleted ${keys.length} cache keys for user`);
   }
 
   async incrementWithExpiry(key: string, ttl: number): Promise<number> {
