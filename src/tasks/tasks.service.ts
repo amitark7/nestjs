@@ -214,7 +214,6 @@ export class TasksService {
   }
 
   async getTaskById(userId: number, id: number) {
-    this.taskLogger.log(`Fetching log with id ${id}`);
     const task = await this.tasksRepository.findOne({
       where: { id: id, userId: userId },
       relations: {
@@ -229,7 +228,6 @@ export class TasksService {
 
   async createTask(userId: number, task: CreateTaskDto) {
     try {
-      this.taskLogger.log('Tasks Data', task);
       const taskData = this.tasksRepository.create({
         ...task,
         userId: userId,
@@ -268,8 +266,6 @@ export class TasksService {
   }
 
   async updateTask(userId: number, id: number, data: UpdateTaskDto) {
-    this.taskLogger.log(`Update Task Data For ID ${id}`);
-
     const { version, ...changes } = data;
 
     // 1. Check that the task exists and belongs to the user
@@ -348,7 +344,6 @@ export class TasksService {
   }
 
   async deleteTask(userId: number, id: number) {
-    this.taskLogger.log(`Task Delete for id ${id}`);
     const res = await this.tasksRepository.softDelete({
       id: id,
       userId: userId,

@@ -432,9 +432,6 @@ describe('AppController (e2e)', () => {
     const taskId = createResponse.body.task.id;
     const version = createResponse.body.task.version;
 
-    console.log('VERSION:', version);
-    console.log('VERSION TYPE:', typeof version);
-
     // Owner updates their own task
     const updateResponse = await request(app.getHttpServer())
       .put(`/tasks/${taskId}`)
@@ -446,23 +443,7 @@ describe('AppController (e2e)', () => {
         version,
       });
 
-    console.log(updateResponse.body.message);
-
-    console.log(
-      updateResponse.status,
-      JSON.stringify(updateResponse.body, null, 2),
-    );
     expect(updateResponse.status).toBe(200); // fails with the real status instead of a confusing undefined
-
-    // expect(updateResponse.body).toBeDefined();
-
-    // expect(updateResponse.body.task).toBeDefined();
-
-    // expect(updateResponse.body.task.title).toBe('Updated Task Title');
-    // expect(updateResponse.body.task.status).toBe('IN_PROGRESS');
-    // expect(updateResponse.body.task.priority).toBe('HIGH');
-
-    // expect(updateResponse.body.task.version).toBe(version + 1);
   });
 
   it('DELETE /tasks/:id - should allow owner to delete their own task', async () => {
