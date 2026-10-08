@@ -1,0 +1,19 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+
+  "setupFiles": ["<rootDir>/setup-e2e.ts"],
+
+  "transform": {
+    "^.+\\.(t|j)s$": ["ts-jest", { "tsconfig": "<rootDir>/tsconfig.e2e.json" }]
+  },
+
+  "transformIgnorePatterns": ["node_modules/(?!@nestjs/)"],
+
+  "moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/../src/$1",
+    "^@nestjs/terminus$": "<rootDir>/../src/test-mocks/terminus.mock.ts"
+  }
+}

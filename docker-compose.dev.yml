@@ -1,0 +1,22 @@
+services:
+  app:
+    ports:
+      - '3000:3000'
+
+    env_file:
+      - .env
+
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      REDIS_URL: redis://redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+  mysql:
+    ports:
+      - '3306:3306'
+
+  redis:
+    ports:
+      - '6379:6379'

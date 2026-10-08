@@ -1,0 +1,19 @@
+services:
+  app:
+    restart: unless-stopped
+
+    env_file:
+      - .env.production
+
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      REDIS_URL: redis://redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+  mysql:
+    restart: unless-stopped
+
+  redis:
+    restart: unless-stopped
